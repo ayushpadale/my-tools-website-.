@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Web Utility Tools - Free Online Developer Tools</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: #fff; text-align: center; padding: 2rem; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .ad-space { background: #e2e8f0; border: 1px dashed #cbd5e1; text-align: center; padding: 1.5rem; margin-bottom: 2rem; color: #64748b; font-weight: bold; }
+        .tool-card { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        .tool-card h2 { margin-bottom: 1rem; color: #2c3e50; }
+        textarea, input, select { width: 100%; padding: 0.8rem; margin: 0.5rem 0 1rem; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #3498db; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+        button:hover { background: #2980b9; }
+        .output { background: #f8f9fa; padding: 1rem; border-left: 4px solid #3498db; margin-top: 1rem; word-break: break-all; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Smart Utility Tools</h1>
+        <p>Fast, Free & Privacy-Focused Online Tools</p>
+    </header>
+
+    <div class="container">
+        <!-- Top Ad Banner Space (AdSense sathi) -->
+        <div class="ad-space">Google AdSense / Banner Advertisement Space</div>
+
+        <!-- Tool 1: Word & Character Counter -->
+        <div class="tool-card">
+            <h2>1. Word & Character Counter</h2>
+            <textarea id="textInput" rows="5" placeholder="Type or paste your text here..." oninput="countText()"></textarea>
+            <div class="output">
+                <strong>Words:</strong> <span id="wordCount">0</span> | 
+                <strong>Characters:</strong> <span id="charCount">0</span>
+            </div>
+        </div>
+
+        <!-- Tool 2: Password Generator -->
+        <div class="tool-card">
+            <h2>2. Strong Password Generator</h2>
+            <label for="passLength">Password Length:</label>
+            <input type="number" id="passLength" value="12" min="6" max="32">
+            <button onclick="generatePassword()">Generate Password</button>
+            <div class="output" id="passwordResult">Click generate to create password</div>
+        </div>
+
+        <!-- Tool 3: Text Case Converter -->
+        <div class="tool-card">
+            <h2>3. Text Case Converter</h2>
+            <textarea id="caseInput" rows="4" placeholder="Enter text to convert..."></textarea>
+            <button onclick="convertCase('upper')">UPPERCASE</button>
+            <button onclick="convertCase('lower')">lowercase</button>
+            <button onclick="convertCase('title')">Title Case</button>
+        </div>
+
+        <!-- Bottom Ad Banner Space -->
+        <div class="ad-space">Google AdSense / Banner Advertisement Space</div>
+    </div>
+
+    <script>
+        function countText() {
+            let text = document.getElementById("textInput").value.trim();
+            let words = text ? text.split(/\s+/).length : 0;
+            document.getElementById("wordCount").innerText = words;
+            document.getElementById("charCount").innerText = text.length;
+        }
+
+        function generatePassword() {
+            let length = document.getElementById("passLength").value;
+            let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById("passwordResult").innerText = password;
+        }
+
+        function convertCase(type) {
+            let input = document.getElementById("caseInput");
+            if (type === 'upper') input.value = input.value.toUpperCase();
+            if (type === 'lower') input.value = input.value.toLowerCase();
+            if (type === 'title') {
+                input.value = input.value.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
+                    return match.toUpperCase();
+                });
+            }
+        }
+    </script>
+</body>
+</html>
